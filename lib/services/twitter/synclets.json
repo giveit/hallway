@@ -50,6 +50,7 @@
       "source": "http://assets.singly.com/service-icons/1024px/twitter.png"
     }
   ],
+  "sandbox": true,
   "synclets": [
     {
       "name": "self",
