@@ -1,5 +1,10 @@
 var async = require('async');
 var request = require('request');
+var http = require('http');
+var https = require('https');
+
+http.globalAgent.maxSockets = 1000;
+https.globalAgent.maxSockets = 1000;
 
 var GRAPH_BASE = 'https://graph.facebook.com/';
 
@@ -18,28 +23,38 @@ var fetches = parseInt(process.argv[3] || 100, 10);
 console.log("Fetching", fetches, "times with", workers, "workers");
 
 var totalRequested = 0;
-var start = Date.now();
+var count = 0;
+var start;
 
 function fetch(endpoint, callback) {
   request.get(GRAPH_BASE + endpoint, {
     qs: {
       access_token: process.env.FBTOKEN
     }
-  }, function(err, response, body) {
+  }, function (err, response, body) {
     totalRequested += body.length;
+    count++;
     callback();
   });
 }
 
 var work = async.queue(fetch, workers);
 
-for (var i = 0; i < fetches; i++) {
-  work.push(ENDPOINTS[i % ENDPOINTS.length]);
+function checkAllFinished() {
+  if (count !== fetches) {
+    return;
+  }
+
+  var diff = Date.now() - start;
+
+  console.log(totalRequested + ' bytes in ' + diff + 'ms: ' +
+    (totalRequested / (diff / 1000)) + 'b/s');
+
+  process.exit(0);
 }
 
-work.drain = function() {
-  var diff = Date.now() - start;
-  console.log(totalRequested, "bytes in", diff, "ms: ",
-      totalRequested / (diff / 1000), "b/s");
-};
+start = Date.now();
 
+for (var i = 0; i < fetches; i++) {
+  work.push(ENDPOINTS[i % ENDPOINTS.length], checkAllFinished);
+}
