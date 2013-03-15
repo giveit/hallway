@@ -3,7 +3,7 @@
   "lockerListenIP": "0.0.0.0",
   "lockerHost": "localhost",
   "lockerPort": 8042,
-  "externalHost": "localhost",
+  "externalHost": "dev.give.it",
   "externalPort": 8042,
   "externalProtocol": "http://",
   "dnsReapTime": 300000,
@@ -20,7 +20,11 @@
     "port": 8041,
     "redis": { "host": "localhost",
                "port": 6379,
-               "database": 0}
+               "database": 0},
+      
+    "heartbeatInterval": 45000,
+	"watchdogInterval": 500,
+	"childStopInterval": 500           
   },
   "taskmaster": {
     "listenIP": "0.0.0.0",
@@ -47,11 +51,11 @@
   },
   "multiLimit": 10,
   "taskman": {
-    "numWorkers": 4,
-    "pagingTiming": 2000,
-    "defaultScanTime": 5000,
+    "numWorkers": 10,
+    "pagingTiming": 1000,
+    "defaultScanTime": 1000,
     "attempts": 8,
-    "heartbeat": 10000,
+    "heartbeat": 500,
     "store": {
       "type": "riak",
       "servers": ["localhost:8098"]
@@ -66,8 +70,8 @@
     "servers": ["localhost:8098"]
   },
   "stream": {
-    "apihost": "http://localhost:8042",
-    "streamhost": "http://localhost:8069",
+    "apihost": "http://dev.give.it:8042",
+    "streamhost": "http://dev.give.it:8069",
     "port": 8069,
     "listenIP": "0.0.0.0"
   },
@@ -78,9 +82,6 @@
     "oldsign": "bar"
   },
   "cookieExpire": 2592000,
-  "logging": {
-    "level": "verbose"
-  },
   "tolerance": {
     "threshold": 50,
     "maxstep": 10,
