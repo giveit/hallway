@@ -108,8 +108,8 @@ function runService(paginationPi, cb) {
       }
 
       if (synclets.sandbox) {
-        pi.all = pi.config;
-        pi.config = pi.config[synclet];
+        pi.all = pi.config || {};
+        pi.config = pi.config[synclet] || {};
       }
 
       if (pi.all) logger.info('All configs: %j', pi.all);
@@ -159,6 +159,10 @@ function runService(paginationPi, cb) {
 
           if (synclets.sandbox) {
             pi.all[synclet] = data.config;
+            if (data.config && data.config.nextRun) {
+              pi.all.nextRun = data.config.nextRun;
+              delete data.config.nextRun;
+            }
             pi.config = pi.all;
           } else {
             _.extend(pi.config, data.config);

@@ -50,6 +50,28 @@
     "password": "test-password"
   },
   "multiLimit": 10,
+  "nexus": {
+    "database": 3,
+    "host": "localhost",
+    "port": 8060,
+    "secure": false,
+    "listenIP": "0.0.0.0",
+    "auth": {
+      "user": "rick",
+      "pass": "deckard-B26354"
+    }
+  },
+  "pods": {
+    "enabled": false,
+    "domain": "localhost",
+    "secure": false,
+    "listenIP": "0.0.0.0",
+    "port": 8070,
+    "auth": {
+      "user": "hal",
+      "pass": "openthepodbaydoors"
+    }
+  },
   "taskman": {
     "numWorkers": 10,
     "pagingTiming": 1000,
@@ -69,6 +91,10 @@
     "type": "riak",
     "servers": ["localhost:8098"]
   },
+  "redis": {
+    "host": "localhost",
+    "port": 6379
+  },
   "stream": {
     "apihost": "http://dev.give.it:8042",
     "streamhost": "http://dev.give.it:8069",
@@ -82,6 +108,10 @@
     "oldsign": "bar"
   },
   "cookieExpire": 2592000,
+  "logging": {
+    "level": "debug",
+    "localLevel": "debug"
+  },
   "tolerance": {
     "threshold": 50,
     "maxstep": 10,
