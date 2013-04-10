@@ -3,7 +3,7 @@
   "lockerListenIP": "0.0.0.0",
   "lockerHost": "localhost",
   "lockerPort": 8042,
-  "externalHost": "localhost",
+  "externalHost": "dev.give.it",
   "externalPort": 8042,
   "externalProtocol": "http://",
   "dnsReapTime": 300000,
@@ -105,8 +105,8 @@
   },
   "cookieExpire": 2592000,
   "logging": {
-    "level": "debug",
-    "localLevel": "debug"
+    "level": "inf",
+    "localLevel": "info"
   },
   "tolerance": {
     "threshold": 50,
