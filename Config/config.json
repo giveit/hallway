@@ -1,0 +1,21 @@
+{
+ "database": {
+    "driver": "mysql",
+    "hostname":"localhost",
+    "username":"hallway",
+    "user":"hallway",
+    "password":"test",
+    "database":"hallway_dev"
+  },
+  "ijod_backend": "file",
+
+  "ijod_file": "/tmp/ijod",
+  
+  "cache": {
+    "redis": {
+      "host": "localhost",
+      "port": 6379,
+      "db": 2
+    }
+  }
+}
