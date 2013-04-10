@@ -105,7 +105,7 @@
   },
   "cookieExpire": 2592000,
   "logging": {
-    "level": "inf",
+    "level": "info",
     "localLevel": "info"
   },
   "tolerance": {
