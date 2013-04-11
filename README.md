@@ -1,3 +1,8 @@
+# TO MAKE SINGLY A DEAMON
+
+
+
+
 # Singly Hallway - Empowering Personal Data Applications
 
 [![Build Status](https://travis-ci.org/Singly/hallway.png)](https://travis-ci.org/Singly/hallway)
