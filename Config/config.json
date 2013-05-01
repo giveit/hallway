@@ -9,7 +9,7 @@
   },
   "ijod_backend": "file",
 
-  "ijod_file": "/tmp/ijod",
+  "ijod_path": "/tmp/ijod",
   
   "cache": {
     "redis": {
